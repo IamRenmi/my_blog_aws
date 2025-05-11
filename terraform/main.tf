@@ -39,3 +39,11 @@ module "rds" {
   password          = var.db_password
   availability_zone = var.db_az
 }
+
+# EFS
+module "efs" {
+  source            = "../modules/efs"
+  vpc_id            = module.vpc.vpc_id
+  subnet_ids        = module.vpc.data_subnet_ids
+  security_group_id = module.security_groups.efs_sg_id
+}

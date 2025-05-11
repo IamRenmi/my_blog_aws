@@ -50,3 +50,12 @@ output "rds_endpoint" {
 output "rds_port" {
   value = module.rds.port
 }
+
+# EFS
+output "efs_id" {
+  value = module.efs.efs_id
+}
+
+output "efs_mount_target_ids" {
+  value = module.efs.mount_target_ids
+}
