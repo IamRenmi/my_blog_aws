@@ -52,7 +52,7 @@ module "efs" {
 # Setup instance
 module "setup_instance" {
   source             = "../modules/ec2"
-  ami_id             = "ami-0dfe0f1abee59c78d"
+  ami_id            = "ami-0dfe0f1abee59c78d"
   instance_type      = "t2.micro"
   key_name           = "wordpress"
   subnet_id          = module.vpc.public_subnet_ids[0] # public-a
@@ -67,4 +67,29 @@ module "setup_instance" {
   db_user            = var.db_username
   db_password        = var.db_password
   region             = var.region
+}
+
+module "webserver_a" {
+  source            = "../modules/webserver"
+  ami_id            = "ami-0dfe0f1abee59c78d"
+  instance_type     = "t2.micro"
+  key_name          = "wordpress"
+  subnet_id         = module.vpc.app_subnet_ids[0]
+  subnet_name       = "a"
+  security_group_id = module.security_groups.web_sg_id
+  efs_mount_dns     = module.efs.efs_id
+  region            = var.region
+}
+
+# Instantiate Webserver B (subnet app-b)
+module "webserver_b" {
+  source            = "../modules/webserver"
+  ami_id            = "ami-0dfe0f1abee59c78d"
+  instance_type     = "t2.micro"
+  key_name          = "wordpress"
+  subnet_id         = module.vpc.app_subnet_ids[1]
+  subnet_name       = "b"
+  security_group_id = module.security_groups.web_sg_id
+  efs_mount_dns     = module.efs.efs_id
+  region            = var.region
 }
