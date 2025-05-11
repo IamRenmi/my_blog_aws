@@ -106,13 +106,3 @@ module "alb" {
   }
   # uses default protocol = "HTTP", port = 80, health_check settings
 }
-
-## launch template
-module "launch_template" {
-  source            = "../modules/launch_template"
-  ami_id            = "ami-03b82db05dca8118d"
-  instance_type     = "t2.micro"
-  security_group_id = module.security_groups.web_sg_id
-  efs_mount_dns     = module.efs.efs_id
-  region            = var.region
-}
