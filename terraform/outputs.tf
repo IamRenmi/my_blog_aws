@@ -86,3 +86,19 @@ output "webserver_a_ip" {
 output "webserver_b_ip" {
   value = module.webserver_b.webserver_private_ip
 }
+
+## alb
+output "alb_arn" {
+  description = "ARN of the Application Load Balancer"
+  value       = module.alb.alb_arn
+}
+
+output "listener_arn" {
+  description = "ARN of the HTTP listener"
+  value       = module.alb.listener_arn
+}
+
+output "target_group_arn" {
+  description = "ARN of the ALB target group"
+  value       = module.alb.target_group_arn
+}
