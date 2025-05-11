@@ -44,6 +44,18 @@ variable "health_check" {
     timeout             = 5
     healthy_threshold   = 5
     unhealthy_threshold = 2
-    matcher             = "200-302"
+    matcher             = "200,301,302"
   }
+}
+
+variable "protocol_https" {
+  description = "Protocol for ALB listener and target group"
+  type        = string
+  default     = "HTTPS"
+}
+
+variable "port_https" {
+  description = "Port for ALB listener and target group"
+  type        = number
+  default     = 443
 }

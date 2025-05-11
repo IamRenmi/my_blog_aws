@@ -41,6 +41,18 @@ resource "aws_lb_listener" "http" {
   }
 }
 
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = aws_lb.wp_alb.arn
+  protocol          = var.protocol_https
+  port              = var.port_https
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.wp_tg.arn
+  }
+}
+
+
 # Register EC2 instances in the target group
 resource "aws_lb_target_group_attachment" "webservers" {
   for_each         = var.target_ids
