@@ -59,3 +59,13 @@ output "efs_id" {
 output "efs_mount_target_ids" {
   value = module.efs.mount_target_ids
 }
+
+# EC2
+# Setup instance
+output "setup_instance_id" {
+  value = module.setup_instance.instance_id
+}
+
+output "setup_instance_ip" {
+  value = module.setup_instance.public_ip
+}

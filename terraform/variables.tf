@@ -69,7 +69,7 @@ variable "db_password" {
   default     = "lab-password"
 }
 
-variable "db_username" {
+variable "db_user" {
   description = "RDS master user password"
   type        = string
   default = "admin"
@@ -87,7 +87,7 @@ variable "db_name" {
   default     = "wordpress"
 }
 
-variable "wp_db_username" {
+variable "db_username" {
   description = "WordPress database user"
   type        = string
   default     = "admin"
