@@ -41,3 +41,12 @@ output "db_sg_id" {
 output "efs_sg_id" {
   value = module.security_groups.efs_sg_id
 }
+
+# RDS
+output "rds_endpoint" {
+  value = module.rds.address
+}
+
+output "rds_port" {
+  value = module.rds.port
+}

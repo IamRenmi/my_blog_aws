@@ -61,3 +61,34 @@ variable "ssh_allowed_cidr" {
   type        = string
   default = "0.0.0.0/0"
 }
+
+# RDS
+variable "db_password" {
+  description = "RDS master user password"
+  type        = string
+  default     = "lab-password"
+}
+
+variable "db_username" {
+  description = "RDS master user password"
+  type        = string
+  default = "admin"
+}
+
+variable "db_az" {
+  description = "Availability zone for RDS single-AZ deployment"
+  type        = string
+  default     = "eu-west-2a"
+}
+
+variable "db_name" {
+  description = "WordPress database name"
+  type        = string
+  default     = "wordpress"
+}
+
+variable "wp_db_username" {
+  description = "WordPress database user"
+  type        = string
+  default     = "admin"
+}
