@@ -20,3 +20,24 @@ output "public_route_table_id" {
 output "private_route_table_ids" {
   value = module.vpc.private_route_table_ids
 }
+
+# Security Group
+output "alb_sg_id" {
+  value = module.security_groups.alb_sg_id
+}
+
+output "ssh_sg_id" {
+  value = module.security_groups.ssh_sg_id
+}
+
+output "web_sg_id" {
+  value = module.security_groups.web_sg_id
+}
+
+output "db_sg_id" {
+  value = module.security_groups.db_sg_id
+}
+
+output "efs_sg_id" {
+  value = module.security_groups.efs_sg_id
+}

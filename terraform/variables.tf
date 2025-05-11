@@ -54,3 +54,10 @@ variable "subnet_azs" {
     "data-b"   = "eu-west-2b"
   }
 }
+
+# Security Group
+variable "ssh_allowed_cidr" {
+  description = "CIDR block (your IP) allowed to SSH into servers"
+  type        = string
+  default = "0.0.0.0/0"
+}

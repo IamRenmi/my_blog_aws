@@ -10,6 +10,7 @@ locals {
   }
 }
 
+# VPC
 module "vpc" {
   source         = "../modules/vpc"
   region         = var.region
@@ -18,4 +19,12 @@ module "vpc" {
   app_subnets    = var.app_subnets
   data_subnets   = var.data_subnets
   subnet_azs     = var.subnet_azs
+}
+
+# Security Groups
+module "security_groups" {
+  source          = "../modules/sg"
+  vpc_id          = module.vpc.vpc_id
+  ssh_source_cidr = var.ssh_allowed_cidr
+  tags            = local.common_tags
 }
